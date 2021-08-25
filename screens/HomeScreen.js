@@ -17,7 +17,7 @@ export default class HomeScreen extends Component{
   getWord=(word)=>{
     var searchKeyword=word.toLowerCase()
     var url = "https://rupinwhitehatjr.github.io/dictionary/"+searchKeyword+".json"
-    //console.log(url)
+  
     return fetch(url)
     .then((data)=>{
       if(data.status===200)
@@ -30,18 +30,17 @@ export default class HomeScreen extends Component{
       }
     })
     .then((response)=>{
-        //console.log(response)
+       
 
         var responseObject = response
-        //var word = responseObject.word
-        //var lexicalCategory = responseObject.results[0].lexicalEntries[0].lexicalCategory.text
+        
         if(responseObject)
         {
           var wordData = responseObject.definitions[0]
-          //console.log(responseObject.definitions[0])
+         
           var definition=wordData.description
           var lexicalCategory=wordData.wordtype
-          //console.log(lexicalCategory)
+      
           this.setState({
             "word" : this.state.text, 
             "definition" :definition,
